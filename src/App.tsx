@@ -179,7 +179,7 @@ export default function App() {
 
   // ── Favicon ─────────────────────────────────────────────────────────────────
   useEffect(() => {
-    document.title = "Gokhlesh Kumar | Portfolio";
+    document.title = "Gokhlesh Kumar | Resume🧑‍💻";
 
     const createFavicon = () => {
       const canvas = document.createElement("canvas");
