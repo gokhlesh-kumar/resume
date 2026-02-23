@@ -74,23 +74,26 @@ export default function App() {
       <Box
         sx={{
           display: "flex",
-          height: "100vh",
+          height: "100dvh",
+          width: "100vw",
           overflow: "hidden",
-          position: "relative",
+          flexDirection: "column",
           bgcolor: "#323639",
         }}
       >
-        {/* ── Floating Action Buttons (Top Right Corner - Desktop & Mobile Download) ── */}
+        {/* ── Minimalist Top Action Bar ── */}
         <Box
           sx={{
-            position: "absolute",
-            top: { xs: 12, sm: 20 },
-            right: { xs: 12, sm: 24 },
+            width: "100%",
             display: "flex",
             flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "flex-end",
             gap: 1.5,
-            zIndex: 10,
-            alignItems: "flex-end",
+            px: { xs: 2, sm: 3 },
+            py: { xs: 1.5, sm: 2 },
+            flexShrink: 0,
+            bgcolor: "#323639",
           }}
         >
           {/* View Portfolio Button (Secondary Glass) - Visible here on tablet/desktop ONLY */}
@@ -98,7 +101,8 @@ export default function App() {
             <Box
               component="a"
               href="https://gokhlesh-kumar.github.io/"
-              target="_blank" rel="noopener noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 display: { xs: "none", sm: "flex" },
                 alignItems: "center",
@@ -109,11 +113,8 @@ export default function App() {
                 borderRadius: "8px",
                 textDecoration: "none",
                 color: "#f8f9fa",
-                background: "rgba(32, 33, 36, 0.4)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
+                background: "rgba(255, 255, 255, 0.05)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                 fontWeight: 500,
                 fontSize: "0.85rem",
                 transition: "all 0.2s ease",
@@ -173,61 +174,16 @@ export default function App() {
           </Tooltip>
         </Box>
 
-        {/* ── Floating Action Button (Bottom Right Corner - Mobile Portfolio ONLY) ── */}
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: 24,
-            right: 16,
-            display: { xs: "flex", sm: "none" },
-            zIndex: 10,
-          }}
-        >
-          <Tooltip title="Go to Interactive Portfolio" placement="top">
-            <Box
-              component="a"
-              href="https://gokhlesh-kumar.github.io/"
-              target="_blank" rel="noopener noreferrer"
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 0.75,
-                px: 2,
-                py: 1,
-                borderRadius: "24px",
-                textDecoration: "none",
-                color: "#f8f9fa",
-                background: "rgba(32, 33, 36, 0.6)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
-                fontWeight: 500,
-                fontSize: "0.8rem",
-                transition: "all 0.2s ease",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <OpenInNewIcon sx={{ fontSize: 16 }} />
-              <span>View Portfolio</span>
-            </Box>
-          </Tooltip>
-        </Box>
-
         {/* ── PDF Viewer Area ── */}
         <Box
           sx={{
             width: "100%",
-            height: "100%",
             flex: 1,
-            bgcolor: "#525659",
             display: "flex",
             alignItems: "stretch",
             justifyContent: "stretch",
             p: 0,
-            overflow: "hidden",
-            pt: 0, // No extra padding needed since buttons absolute positioned
+            overflow: "hidden", // We can keep hidden here because iframe has scroll
           }}
         >
           <Box
@@ -240,9 +196,51 @@ export default function App() {
               flex: 1,
               border: "none",
               display: "block",
-              borderRadius: 0,
             }}
           />
+        </Box>
+
+        {/* ── Floating Action Button (Bottom Right Corner - Mobile Portfolio ONLY) ── */}
+        <Box
+          sx={{
+            position: "fixed",
+            bottom: { xs: 24, sm: 32 },
+            right: { xs: 16, sm: 24 },
+            display: { xs: "flex", sm: "none" },
+            zIndex: 100,
+          }}
+        >
+          <Tooltip title="Go to Interactive Portfolio" placement="top">
+            <Box
+              component="a"
+              href="https://gokhlesh-kumar.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 0.75,
+                px: 2.5,
+                py: 1.25,
+                borderRadius: "24px",
+                textDecoration: "none",
+                color: "#f8f9fa",
+                background: "rgba(32, 33, 36, 0.8)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
+                boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
+                fontWeight: 500,
+                fontSize: "0.85rem",
+                transition: "all 0.2s ease",
+                whiteSpace: "nowrap",
+              }}
+            >
+              <OpenInNewIcon sx={{ fontSize: 16 }} />
+              <span>View Portfolio</span>
+            </Box>
+          </Tooltip>
         </Box>
       </Box>
     </ThemeProvider>
